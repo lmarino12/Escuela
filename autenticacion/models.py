@@ -29,4 +29,4 @@ class Materia(models.Model):
     profesor = models.ForeignKey(Maestro, on_delete=models.CASCADE)
     alumno = models.ForeignKey(Alumno, on_delete=models.CASCADE)
     def __str__(self):
-        return self.name, self.alumno, self.profesor
+        return self.name, self.alumno.name, self.profesor.name

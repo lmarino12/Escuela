@@ -8,7 +8,7 @@ class Alumno(models.Model):
     telf = models.IntegerField()
     correo = models.CharField(max_length=200)
     def __str__(self):
-        return self.name, self.cedula, self.telf, self. correo
+        return self.name
 
 class Maestro(models.Model):
     name = models.CharField(max_length=200)
@@ -16,7 +16,7 @@ class Maestro(models.Model):
     telf = models.IntegerField()
     correo = models.CharField(max_length=200)
     def __str__(self):
-        return self.name, self.cedula, self.telf, self. correo
+        return self.name
 
 class Task(models.Model):
     title = models.CharField(max_length=200)
@@ -29,4 +29,4 @@ class Materia(models.Model):
     profesor = models.ForeignKey(Maestro, on_delete=models.CASCADE)
     alumno = models.ForeignKey(Alumno, on_delete=models.CASCADE)
     def __str__(self):
-        return self.name, self.curso, self.horario, self.profesor, self.alumno
+        return self.name, self.alumno, self.profesor

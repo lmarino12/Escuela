@@ -1,4 +1,7 @@
-
+{%extends "base.html"%}
+{%block content%}
+<h1>{{Alumno_}}</h1>
 {% for materia in materias %}
 <h1>{{materia.name}}</h1>
 {% endfor %}
+{%endblock%}

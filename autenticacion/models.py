@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 # Create your models here.
 
 class Alumno(models.Model):
@@ -18,9 +19,10 @@ class Maestro(models.Model):
     def __str__(self):
         return self.name
 
-class Task(models.Model):
-    title = models.CharField(max_length=200)
-    alumno = models.ForeignKey(Alumno, on_delete=models.CASCADE)
+class CustomUser(UserCreationForm):
+    class Alumno_:
+        model=User
+        fields=["username","first_name","last_name","email","password1","password2"]
 
 class Materia(models.Model):
     name = models.CharField(max_length=200)

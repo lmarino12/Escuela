@@ -7,7 +7,11 @@ def hola(request):
     return render(request, "index.html")
 
 def registro(request):
-    return render(request, "registro.html")
+    #materia = list(Materia.objects.values())
+    materias = Materia.objects.all()
+    return render(request, "registro.html", {
+        "materias": materias
+    })
 
 def horario(request):
     return render(request, "horario.html")

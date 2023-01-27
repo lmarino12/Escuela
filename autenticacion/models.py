@@ -4,12 +4,13 @@ from django.contrib.auth.forms import UserCreationForm
 # Create your models here.
 
 class Alumno(models.Model):
-    name = models.CharField(max_length=200)
-    cedula = models.IntegerField()
-    telf = models.IntegerField()
-    correo = models.CharField(max_length=200)
+    username = models.CharField(max_length=200)
+    f_name = models.CharField(max_length=200)
+    l_name = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+    password = models.CharField(max_length=200)
     def __str__(self):
-        return self.name
+        return self.username
 
 class Maestro(models.Model):
     name = models.CharField(max_length=200)
@@ -19,10 +20,6 @@ class Maestro(models.Model):
     def __str__(self):
         return self.name
 
-class CustomUser(UserCreationForm):
-    class Alumno_:
-        model=User
-        fields=["username","first_name","last_name","email","password1","password2"]
 
 class Materia(models.Model):
     name = models.CharField(max_length=200)

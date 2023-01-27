@@ -1,6 +1,10 @@
 {%extends "base.html"%}
 {%block content%}
 <h1>REGISTRO DE NUEVO USUARIO</h1>
-<input type="text">
-<textarea name="Nombre" id="" cols="4" rows="1.5"></textarea>
+<form method="POST">
+    {{form.as_p}}
+    <button>
+        Save
+    </button>
+</form>
 {%endblock%}

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from .models import *
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from .forms import CreateStudent
 # Create your views here.
 def hola(request):
@@ -13,9 +13,10 @@ def registro(request):
             "form": CreateStudent()
         })
     else:
-        Alumno.objects.create(username=request.GET["username"], f_name=request.GET["f_name"],
-                              l_name=request.GET["l_name"], email=request.GET["email"],
-                              password=request.GET["password"])
+        Alumno.objects.create(email=request.POST["email"], f_name=request.POST["f_name"],
+                              l_name=request.POST["l_name"], password=request.POST["password"],
+                              username=request.POST["username"])
+        return redirect("")
 
 
 def horario(request):

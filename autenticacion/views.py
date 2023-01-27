@@ -16,7 +16,7 @@ def registro(request):
         Alumno.objects.create(email=request.POST["email"], f_name=request.POST["f_name"],
                               l_name=request.POST["l_name"], password=request.POST["password"],
                               username=request.POST["username"])
-        return redirect("")
+        return redirect("/")
 
 
 def horario(request):

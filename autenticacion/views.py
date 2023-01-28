@@ -53,13 +53,18 @@ def horario(request):
             "form": Materias()
         })
     else:
-        Materia.objects.create(name=request.POST["name"], curso=request.POST["curso"],
-                               horario=request.POST["horario"], profesor_id=int(request.POST["profesor"]),
-                               alumno_id=int(request.POST["alumno"]))
-        mensaje = 'Registro creado con exito'
-        print("\n" + mensaje + "\n")
-        return redirect("/")
-
+        if Materia.objects.filter(alumno_id=int(request.POST["alumno"])).count():
+            # imprime de momento en consola
+            mensaje = 'Alumno ya esta registrado en esta materia'
+            print("\n" + mensaje + "\n")
+            return redirect("/horario/")
+        else:
+            Materia.objects.create(name=request.POST["name"], curso=request.POST["curso"],
+                                   horario=request.POST["horario"], profesor_id=int(request.POST["profesor"]),
+                                   alumno_id=int(request.POST["alumno"]))
+            mensaje = 'Registro creado con exito'
+            print("\n" + mensaje + "\n")
+            return redirect("/")
 
 def profesores(request):
     if request.method == "GET":

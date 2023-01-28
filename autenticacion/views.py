@@ -14,15 +14,19 @@ def registro(request):
             "form": CreateStudent()
         })
     else:
-        for alum in Alumno.objects.all():
-            if alum.username == request.POST["username"]:
-                return ("/horario/")
-            else:
-                Alumno.objects.create(email=request.POST["email"], f_name=request.POST["f_name"],
-                                    l_name=request.POST["l_name"], password=request.POST["password"],
-                                    username=request.POST["username"])
-        return redirect("/")
-
+        usuario=request.POST.get("username")
+        if Alumno.objects.filter(username=usuario).count():
+            #imprime de momento en consola que no se puede usar ese usuario
+            mensaje = 'Usuario ya existe, utilice otro'
+            print("\n"+mensaje+"\n")
+            return redirect("/registro/")
+        else:
+            Alumno.objects.create(email=request.POST["email"], f_name=request.POST["f_name"],
+                                l_name=request.POST["l_name"], password=request.POST["password"],
+                                username=request.POST["username"])
+            mensaje = 'Usuario creado con exito'
+            print("\n" + mensaje + "\n")
+            return redirect("/")
 
 def horario(request):
     return render(request, "horario.html")

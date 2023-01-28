@@ -1,4 +1,5 @@
 from django import forms
+from .models import *
 
 class CreateStudent(forms.Form):
     username = forms.CharField(label="Usuario")

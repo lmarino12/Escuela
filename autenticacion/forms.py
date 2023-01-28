@@ -1,6 +1,8 @@
 from django import forms
 from .models import *
 
+
+#Formas que se crearon para mostrar en los htmls
 class CreateStudent(forms.Form):
     username = forms.CharField(label="Usuario")
     f_name = forms.CharField(label="Primer Nombre")

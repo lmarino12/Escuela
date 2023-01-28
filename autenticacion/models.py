@@ -1,6 +1,6 @@
 from django.db import models
 # Create your models here.
-
+#Tablas que se crearon para guardar en la base de datos por defecto de django
 class Alumno(models.Model):
     username = models.CharField(max_length=200)
     f_name = models.CharField(max_length=200)

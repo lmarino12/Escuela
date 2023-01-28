@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from .forms import *
 
 # Create your views here.
+#Vista de inicio, se puede navegar a varias paginas o logearme para elegir materias
 def hola(request):
     if request.method == "GET":
         return render(request, "index.html", {
@@ -26,6 +27,7 @@ def hola(request):
                 return redirect("/")
 
 
+#Se puede registrar los alumnos para luego ingresar a elegir materias
 def registro(request):
     if request.method == "GET":
         return render(request, "registro.html", {
@@ -46,7 +48,7 @@ def registro(request):
             print("\n" + mensaje + "\n")
             return redirect("/")
 
-
+#Se pueden elegir materias con su respectivo profesor y alumno
 def horario(request):
     if request.method == "GET":
         return render(request, "horario.html", {
@@ -66,6 +68,8 @@ def horario(request):
             print("\n" + mensaje + "\n")
             return redirect("/")
 
+
+#Los profesores se pueden registrar para que los alumnos los elijan
 def profesores(request):
     if request.method == "GET":
         return render(request, "profesores.html", {

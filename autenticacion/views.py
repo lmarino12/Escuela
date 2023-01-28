@@ -54,11 +54,12 @@ def horario(request):
         })
     else:
         Materia.objects.create(name=request.POST["name"], curso=request.POST["curso"],
-                              horario=request.POST["horario"], profesor=request.POST["profesor"],
-                              alumno=request.POST["alumno"])
+                               horario=request.POST["horario"], profesor_id=int(request.POST["profesor"]),
+                               alumno_id=int(request.POST["alumno"]))
         mensaje = 'Registro creado con exito'
         print("\n" + mensaje + "\n")
         return redirect("/")
+
 
 def profesores(request):
     if request.method == "GET":

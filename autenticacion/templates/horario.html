@@ -1,3 +1,5 @@
+{%extends "base.html"%}
+{%block content%}
 <h1>REGISTRO DE MATERIAS</h1>
 <form method="POST">
     {% csrf_token %}
@@ -6,3 +8,4 @@
         Save
     </button>
 </form>
+{%endblock%}

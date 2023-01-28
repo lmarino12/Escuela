@@ -1,4 +1,6 @@
-<h1>REGISTRO DE MATERIAS</h1>
+{%extends "base.html"%}
+{%block content%}
+<h1>REGISTRO DE NUEVO PROFESOR</h1>
 <form method="POST">
     {% csrf_token %}
     {{form.as_p}}
@@ -6,3 +8,4 @@
         Save
     </button>
 </form>
+{%endblock%}

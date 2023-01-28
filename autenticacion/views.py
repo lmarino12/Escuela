@@ -48,4 +48,34 @@ def registro(request):
 
 
 def horario(request):
-    return render(request, "horario.html")
+    if request.method == "GET":
+        return render(request, "horario.html", {
+            "form": Materias()
+        })
+    else:
+        Materia.objects.create(name=request.POST["name"], curso=request.POST["curso"],
+                              horario=request.POST["horario"], profesor=request.POST["profesor"],
+                              alumno=request.POST["alumno"])
+        mensaje = 'Registro creado con exito'
+        print("\n" + mensaje + "\n")
+        return redirect("/")
+
+def profesores(request):
+    if request.method == "GET":
+        return render(request, "profesores.html", {
+            "form": Profesor()
+        })
+    else:
+        usuario = request.POST.get("username")
+        if Maestro.objects.filter(username=usuario).count():
+            # imprime de momento en consola que no se puede usar ese usuario
+            mensaje = 'Usuario ya existe, utilice otro'
+            print("\n" + mensaje + "\n")
+            return redirect("/profesores/")
+        else:
+            Maestro.objects.create(email=request.POST["email"], f_name=request.POST["f_name"],
+                                  l_name=request.POST["l_name"], password=request.POST["password"],
+                                  username=request.POST["username"])
+            mensaje = 'Usuario creado con exito'
+            print("\n" + mensaje + "\n")
+            return redirect("/")

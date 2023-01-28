@@ -11,12 +11,14 @@ class Alumno(models.Model):
         return self.username
 
 class Maestro(models.Model):
-    name = models.CharField(max_length=200)
-    cedula = models.IntegerField()
-    telf = models.IntegerField()
-    correo = models.CharField(max_length=200)
+    username = models.CharField(max_length=200)
+    f_name = models.CharField(max_length=200)
+    l_name = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+    password = models.CharField(max_length=200)
+
     def __str__(self):
-        return self.name
+        return self.username
 
 
 class Materia(models.Model):
@@ -26,4 +28,4 @@ class Materia(models.Model):
     profesor = models.ForeignKey(Maestro, on_delete=models.CASCADE)
     alumno = models.ForeignKey(Alumno, on_delete=models.CASCADE)
     def __str__(self):
-        return self.name, self.alumno.name, self.profesor.name
+        return self.name, self.alumno.username, self.profesor.username

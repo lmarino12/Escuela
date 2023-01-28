@@ -7,3 +7,7 @@ class CreateStudent(forms.Form):
     l_name = forms.CharField(label="Primer Apellido")
     email = forms.CharField(label="Correo")
     password = forms.CharField(label="Contraseña")
+
+class Ingreso(forms.Form):
+    username = forms.CharField(label="Usuario")
+    password = forms.CharField(label="Contraseña")

@@ -1,6 +1,7 @@
 from .models import *
 from django.shortcuts import render, redirect
 from .forms import *
+from rest_framework.viewsets import  ModelViewSet
 
 # Create your views here.
 #Vista de inicio, se puede navegar a varias paginas o logearme para elegir materias
@@ -89,3 +90,6 @@ def profesores(request):
             mensaje = 'Usuario creado con exito'
             print("\n" + mensaje + "\n")
             return redirect("/")
+
+class PostApiViewSet(ModelViewSet):
+    queryset=Alumno.objects.all()

@@ -33,6 +33,7 @@ def hola(request):
                 return redirect("/")
 
 
+
 #Se puede registrar los alumnos para luego ingresar a elegir materias
 def registro(request):
     """
@@ -110,3 +111,6 @@ def profesores(request):
 
 class PostApiViewSet(ModelViewSet):
     queryset=Alumno.objects.all()
+
+
+print(doctest.testmod())

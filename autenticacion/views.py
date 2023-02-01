@@ -2,10 +2,15 @@ from .models import *
 from django.shortcuts import render, redirect
 from .forms import *
 from rest_framework.viewsets import  ModelViewSet
+import doctest
 
 # Create your views here.
 #Vista de inicio, se puede navegar a varias paginas o logearme para elegir materias
 def hola(request):
+    """
+    >>> hola(request=GET)
+    >>> hola(request=POST)
+    """
     if request.method == "GET":
         return render(request, "index.html", {
             "form": Ingreso()
@@ -30,6 +35,10 @@ def hola(request):
 
 #Se puede registrar los alumnos para luego ingresar a elegir materias
 def registro(request):
+    """
+        >>> registro(request=GET)
+        >>> registro(request=POST)
+        """
     if request.method == "GET":
         return render(request, "registro.html", {
             "form": CreateStudent()
@@ -51,6 +60,10 @@ def registro(request):
 
 #Se pueden elegir materias con su respectivo profesor y alumno
 def horario(request):
+    """
+        >>> horario(request=GET)
+        >>> horario(request=POST)
+        """
     if request.method == "GET":
         return render(request, "horario.html", {
             "form": Materias()
@@ -72,6 +85,10 @@ def horario(request):
 
 #Los profesores se pueden registrar para que los alumnos los elijan
 def profesores(request):
+    """
+        >>> profesores(request=GET)
+        >>> profesores(request=POST)
+        """
     if request.method == "GET":
         return render(request, "profesores.html", {
             "form": Profesor()

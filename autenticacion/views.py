@@ -1,8 +1,6 @@
 from .models import *
 from django.shortcuts import render, redirect
 from .forms import *
-from rest_framework.viewsets import  ModelViewSet
-import doctest
 
 # Create your views here.
 #Vista de inicio, se puede navegar a varias paginas o logearme para elegir materias
@@ -109,8 +107,3 @@ def profesores(request):
             print("\n" + mensaje + "\n")
             return redirect("/")
 
-class PostApiViewSet(ModelViewSet):
-    queryset=Alumno.objects.all()
-
-
-print(doctest.testmod())
